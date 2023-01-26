@@ -12,6 +12,7 @@
     },
     "dependencies": {
         "@graphql-tools/load-files": "^6.6.1",
+        "bcrypt": "^5.1.0",
         "graphql": "^16.6.0",
         "graphql-yoga": "^3.3.0",
         "mongoose": "^6.9.0"
