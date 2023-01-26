@@ -1,0 +1,23 @@
+{
+    "name": "graphql-mongoose-template",
+    "version": "1.0.0",
+    "description": "A simple GraphQL and Mongoose template",
+    "author": "Manuel Cabral",
+    "license": "MIT",
+    "private": false,
+    "main": "src/index.js",
+    "scripts": {
+        "start": "node src/index.js",
+        "dev": "SET NODE_ENV=development && nodemon src/index.js"
+    },
+    "dependencies": {
+        "@graphql-tools/load-files": "^6.6.1",
+        "graphql": "^16.6.0",
+        "graphql-yoga": "^3.3.0",
+        "mongoose": "^6.9.0"
+    },
+    "devDependencies": {
+        "dotenv": "^16.0.3",
+        "nodemon": "^2.0.20"
+    }
+}
