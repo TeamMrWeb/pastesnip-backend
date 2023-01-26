@@ -1,10 +1,10 @@
 {
-    "name": "graphql-mongoose-template",
+    "name": "pastesnip-backend",
     "version": "1.0.0",
-    "description": "A simple GraphQL and Mongoose template",
+    "description": "Pastesnip backend",
     "author": "Manuel Cabral",
     "license": "MIT",
-    "private": false,
+    "private": true,
     "main": "src/index.js",
     "scripts": {
         "start": "node src/index.js",
