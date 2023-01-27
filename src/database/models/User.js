@@ -27,6 +27,30 @@ const userSchema = new Schema(
             minlength: 8,
             maxlength: 64,
         },
+        about: {
+            type: String,
+            trim: true,
+            maxlength: 128,
+        },
+        role: {
+            type: String,
+            enum: ['user', 'admin'],
+            default: 'user',
+        },
+        verified: {
+            type: Boolean,
+            default: false,
+        },
+        avatar: {
+            secure_url: {
+                type: String,
+                default: null,
+            },
+            public_id: {
+                type: String,
+                default: null,
+            },
+        },
     },
     {
         timestamps: true,
