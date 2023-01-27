@@ -1,0 +1,6 @@
+type User {
+    id: ID!
+    username: String!
+    body: String!
+    createdAt: String!
+}
