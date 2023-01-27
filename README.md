@@ -27,6 +27,7 @@ yarn test:integration
 Before to run the server you need to define a **.env** file with some required variables, you can check this [example](https://github.com/TeamParches/pastesnip-backend/blob/main/.env.example)
 
 Necessary
+- MongoDB URI connection
 - Cloudinary access keys
 - Email credentials (from google, recommended)
 
