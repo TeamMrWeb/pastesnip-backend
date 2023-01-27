@@ -7,10 +7,7 @@ module.exports = {
             const user = await userService.create(user_payload)
             return user
         } catch (error) {
-            throw new errorObject({
-                message: error.message,
-                secure: true,
-            })
+            throw new errorObject({ message: error.message })
         }
     },
 }
