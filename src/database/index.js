@@ -13,6 +13,7 @@ module.exports = {
             })
         } catch (error) {
             console.error('Database connection error', error)
+            throw error
         }
     },
     database_close: async () => {
