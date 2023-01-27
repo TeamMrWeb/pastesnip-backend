@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose')
+const { hashPassword } = require('../../services/crypt.service')
 
 const userSchema = new Schema(
     {
@@ -57,5 +58,15 @@ const userSchema = new Schema(
         versionKey: false,
     },
 )
+
+userSchema.virtual('id').get(function () {
+    return this._id.toHexString()
+})
+
+userSchema.pre('save', async function (next) {
+    if (this.isModified('password'))
+        this.password = await hashPassword(this.password)
+    next()
+})
 
 module.exports = model('User', userSchema)
