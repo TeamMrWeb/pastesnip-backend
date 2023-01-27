@@ -7,11 +7,12 @@ module.exports = {
             mongoose.set('strictQuery', false)
             await mongoose.connect(database.URI)
             if (global.MODE === 'development') mongoose.set('debug', true)
-            console.info(
-                `Connected to database ${mongoose.connection.name} on ${mongoose.connection.host}`,
-            )
+            console.info('Database established', {
+                host: database.URI,
+                database: mongoose.connection.name,
+            })
         } catch (error) {
-            console.error(error)
+            console.error('Database connection error', error)
         }
     },
     database_close: async () => {
@@ -19,7 +20,7 @@ module.exports = {
             await mongoose.connection.close()
             console.info('Database connection closed')
         } catch (error) {
-            console.error(error)
+            console.error('Database connection close error', error)
         }
     },
     models: {
