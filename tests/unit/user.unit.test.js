@@ -25,6 +25,42 @@ describe('UNIT TEST: user.service', () => {
         expect(user).to.be.an('object')
     })
 
+    it('should not create a user with an existing username', async () => {
+        try {
+            new_payload = { ...user_payload, email: 'test2@gmail.com.py' }
+            await userService.create(new_payload)
+        } catch (error) {
+            expect(error).to.be.an('error')
+        }
+    })
+
+    it('should not create a user with an less than 6 characters password', async () => {
+        try {
+            new_payload = { ...user_payload, password: 'test' }
+            await userService.create(new_payload)
+        } catch (error) {
+            expect(error).to.be.an('error')
+        }
+    })
+
+    it('should not create a user with an existing email', async () => {
+        try {
+            new_payload = { ...user_payload, username: 'test2' }
+            await userService.create(new_payload)
+        } catch (error) {
+            expect(error).to.be.an('error')
+        }
+    })
+
+    it('should not creqate a user with invalid email', async () => {
+        try {
+            new_payload = { ...user_payload, email: 'yesir' }
+            await userService.create(new_payload)
+        } catch (error) {
+            expect(error).to.be.an('error')
+        }
+    })
+
     it('should return all users', async () => {
         const users = await userService.findAll()
         expect(users).to.be.an('array')
