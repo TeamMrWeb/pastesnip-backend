@@ -10,4 +10,12 @@ module.exports = {
             throw new errorObject({ message: error.message })
         }
     },
+    getAll: async () => {
+        try {
+            const users = await userService.findAll()
+            return users
+        } catch (error) {
+            throw new errorObject({ message: error.message })
+        }
+    },
 }
