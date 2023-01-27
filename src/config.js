@@ -7,7 +7,9 @@ module.exports = {
         PORT: process.env.PORT || 3000,
         PROTOCOL: process.env.PROTOCOL || 'http',
         DOMAIN: process.env.DOMAIN || 'localhost',
-        MODE: process.env.NODE_ENV.trim(),
+        MODE: process.env.NODE_ENV
+            ? process.env.NODE_ENV.trim()
+            : 'development',
     },
     database: {
         URI: process.env.DATABASE_URI,

@@ -16,7 +16,7 @@
         "pastesnip"
     ],
     "scripts": {
-        "start": "set NODE_ENV=production && node src/index.js",
+        "start": "SET NODE_ENV=production && node src/index.js",
         "dev": "SET NODE_ENV=development && nodemon src/index.js",
         "test:unit": "SET NODE_ENV=test && mocha ./tests/unit/*.js --exit --timeout 0",
         "test:integration": "SET NODE_ENV=test && mocha ./tests/integration/*.js --timeout 0 --exit"
