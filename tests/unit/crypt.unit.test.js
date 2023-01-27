@@ -19,4 +19,10 @@ describe('UNIT TEST: crypt.service', () => {
         const same = await comparePassword(password, hashedPassword)
         expect(same).to.be.true
     })
+
+    it('should compare a wrong password', async () => {
+        const hashedPassword = await hashPassword(password)
+        const same = await comparePassword('wrongpassword', hashedPassword)
+        expect(same).to.be.false
+    })
 })
