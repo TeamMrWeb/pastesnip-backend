@@ -19,11 +19,12 @@
         "start": "set NODE_ENV=production && node src/index.js",
         "dev": "SET NODE_ENV=development && nodemon src/index.js",
         "test:unit": "SET NODE_ENV=test && mocha ./tests/unit/*.js --exit --timeout 0",
-        "test:integration": "SET NODE_ENV=test && mocha ./tests/integration/*.js --exit --timeout 0"
+        "test:integration": "SET NODE_ENV=test && mocha ./tests/integration/*.js --timeout 0 --exit"
     },
     "dependencies": {
         "@graphql-tools/load-files": "^6.6.1",
         "bcrypt": "^5.1.0",
+        "chai-http": "^4.3.0",
         "graphql": "^16.6.0",
         "graphql-yoga": "^3.3.0",
         "mongoose": "^6.9.0"
