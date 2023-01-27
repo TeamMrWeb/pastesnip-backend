@@ -1,0 +1,11 @@
+type User {
+    id: ID
+    username: String
+    email: String
+    about: String
+    role: String
+    verified: Boolean
+    avatar: Avatar
+    createdAt: String
+    updatedAt: String
+}

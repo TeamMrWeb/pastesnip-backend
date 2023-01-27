@@ -1,11 +1,9 @@
 const { createServer } = require('http')
 const { createYoga } = require('graphql-yoga')
 const { createSchema } = require('graphql-yoga')
-const { loadFilesSync } = require('@graphql-tools/load-files')
-const { join } = require('path')
 
 const schema = createSchema({
-    typeDefs: loadFilesSync(join(__dirname, 'graphql', 'schema.graphql')),
+    typeDefs: require('./graphql/typeDefs'),
     resolvers: require('./graphql/resolvers'),
 })
 

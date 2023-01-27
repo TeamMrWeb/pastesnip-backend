@@ -1,15 +1,23 @@
 const { server } = require('./app')
 const { global } = require('./config')
 const { database_connect } = require('./database')
+const { cloudinary_connect } = require('./services/cloudinary.service')
 
-server.listen(global.PORT, async () => {
+// export for testing
+module.exports = server.listen(global.PORT, async () => {
     try {
+        await cloudinary_connect()
         await database_connect()
         const url = `${global.PROTOCOL}://${global.DOMAIN}:${global.PORT}`
-        console.info(`Server running on ${url} in ${global.MODE} mode`)
-        console.info(`GraphiQL running on ${url}/graphiql`)
+        console.info(`Server running`, {
+            url,
+            mode: global.MODE,
+        })
+        console.info(`GraphiQL running`, {
+            url: `${url}/graphiql`,
+        })
     } catch (error) {
-        console.error(error)
-        throw error
+        console.error('Server failed to start')
+        return process.exit(1)
     }
 })

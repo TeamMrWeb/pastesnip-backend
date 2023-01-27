@@ -1,6 +1,9 @@
 module.exports = {
     Query: {
         hello: require('./query/hello'),
+        users: require('./query/users'),
     },
-    // Mutation: {},
+    Mutation: {
+        createNewUser: require('./mutation/createNewUser'),
+    },
 }

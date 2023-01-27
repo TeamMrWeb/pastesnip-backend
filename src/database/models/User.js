@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose')
+const { hashPassword } = require('../../services/crypt.service')
 
 const userSchema = new Schema(
     {
@@ -27,11 +28,49 @@ const userSchema = new Schema(
             minlength: 8,
             maxlength: 64,
         },
+        about: {
+            type: String,
+            trim: true,
+            maxlength: 128,
+        },
+        role: {
+            type: String,
+            enum: ['user', 'admin'],
+            default: 'user',
+        },
+        verified: {
+            type: Boolean,
+            default: false,
+        },
+        avatar: {
+            secure_url: {
+                type: String,
+                default: null,
+            },
+            public_id: {
+                type: String,
+                default: null,
+            },
+        },
     },
     {
         timestamps: true,
         versionKey: false,
     },
 )
+
+userSchema.virtual('id').get(function () {
+    return this._id.toHexString()
+})
+
+userSchema.set('toJSON', {
+    virtuals: true,
+})
+
+userSchema.pre('save', async function (next) {
+    if (this.isModified('password'))
+        this.password = await hashPassword(this.password)
+    next()
+})
 
 module.exports = model('User', userSchema)

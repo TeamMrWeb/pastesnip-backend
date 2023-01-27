@@ -1,19 +1,29 @@
 const mongoose = require('mongoose')
-const { database } = require('../config')
+const { database, global } = require('../config')
 
 module.exports = {
     database_connect: async () => {
         try {
             mongoose.set('strictQuery', false)
             await mongoose.connect(database.URI)
-            console.info(
-                `Connected to database ${mongoose.connection.name} on ${mongoose.connection.host}`,
-            )
+            if (global.MODE === 'development') mongoose.set('debug', true)
+            console.info('Database established', {
+                host: database.URI,
+                database: mongoose.connection.name,
+            })
         } catch (error) {
-            console.error(error)
+            console.error('Database connection error', error)
+            throw error
         }
     },
-
+    database_close: async () => {
+        try {
+            await mongoose.connection.close()
+            console.info('Database connection closed')
+        } catch (error) {
+            console.error('Database connection close error', error)
+        }
+    },
     models: {
         User: require('./models/User'),
     },
