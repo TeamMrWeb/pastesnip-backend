@@ -28,7 +28,8 @@
         "cloudinary": "^1.33.0",
         "graphql": "^16.6.0",
         "graphql-yoga": "^3.3.0",
-        "mongoose": "^6.9.0"
+        "mongoose": "^6.9.0",
+        "nodemailer": "^6.9.1"
     },
     "devDependencies": {
         "chai": "^4.3.7",
