@@ -1,0 +1,4 @@
+type Avatar {
+    secure_url: String
+    public_id: String
+}
