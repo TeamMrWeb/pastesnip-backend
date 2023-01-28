@@ -11,12 +11,17 @@ module.exports = {
     server: createServer(
         createYoga({
             schema,
+            context: async (request) => {
+                return {
+                    ...request,
+                    user: await require('./graphql/middlewares/authenticate')(
+                        request,
+                    ),
+                }
+            },
             cors: {
                 origin: '*',
                 credentials: true,
-            },
-            context: ({ req }) => {
-                // for middlewares
             },
         }),
     ),

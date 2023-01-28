@@ -1,6 +1,8 @@
+const isOwnership = require('./middlewares/isOwnership')
+
 module.exports = {
     Query: {
-        hello: require('./query/hello'),
+        hello: isOwnership(require('./query/hello')),
         users: require('./query/users'),
     },
     Mutation: {
