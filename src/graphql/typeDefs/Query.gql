@@ -7,10 +7,12 @@ type Query {
     """
     hello: String!
     """
+    PROTECTED
     Used to get all users of the system. Returns a list of Users type (click User for see more).
     """
     users: [User!]!
     """
+    PROTECTED
     Used to get a user by id. Returns a User type (click User for see more).
     """
     getUserById(id: ID!): User!
