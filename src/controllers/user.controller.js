@@ -26,4 +26,12 @@ module.exports = {
             throw new errorObject({ message: error.message })
         }
     },
+    deleteUser: async (id) => {
+        try {
+            const user = await userService.remove(id)
+            return user
+        } catch (error) {
+            throw new errorObject({ message: error.message })
+        }
+    }
 }

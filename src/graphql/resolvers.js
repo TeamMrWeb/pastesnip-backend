@@ -8,5 +8,6 @@ module.exports = {
     },
     Mutation: {
         createNewUser: require('./mutation/createNewUser'),
+        deleteUser: require('./mutation/deleteUser'),
     },
 }
