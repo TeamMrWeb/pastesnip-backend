@@ -3,6 +3,11 @@ Root Query type, used for get information about the system.
 """
 type Query {
     """
+    PROTECTED
+    Used to know with which account you're logged in. Returns a User type (click User for see more).
+    """
+    me: User!
+    """
     Simple query for check if the system works. Returns a string.
     """
     hello: String!

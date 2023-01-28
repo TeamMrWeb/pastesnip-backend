@@ -2,6 +2,7 @@ const isLogged = require('./middlewares/isLogged')
 
 module.exports = {
     Query: {
+        me: isLogged(require('./query/me')),
         hello: require('./query/hello'),
         users: isLogged(require('./query/users')),
         getUserById: isLogged(require('./query/getUserById')),
