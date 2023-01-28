@@ -1,0 +1,13 @@
+"""
+A type that describes auth token.
+"""
+type Token {
+    """
+    The access token.
+    """
+    access: String
+    """
+    The refresh token.
+    """
+    refresh: String
+}
