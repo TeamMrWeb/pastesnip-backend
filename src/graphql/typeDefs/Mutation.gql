@@ -7,4 +7,9 @@ type Mutation {
     Returns a User type (click User to see more).
     """
     createNewUser(username: String!, email: String!, password: String!): User!
+    """
+    Used for delete a user in the system, requires a valid user id.
+    Returns a User type (click User to see more).
+    """
+    deleteUser(id: ID!): User!
 }
