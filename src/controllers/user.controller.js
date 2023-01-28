@@ -18,4 +18,12 @@ module.exports = {
             throw new errorObject({ message: error.message })
         }
     },
+    findById: async (id) => {
+        try {
+            const user = await userService.findById(id)
+            return user
+        } catch (error) {
+            throw new errorObject({ message: error.message })
+        }
+    },
 }
