@@ -35,10 +35,11 @@ module.exports = {
         },
     },
     email: {
-        USER: process.env.EMAIL_USER,
-        PASSWORD: process.env.EMAIL_PASSWORD,
-        ADDRESS: process.env.EMAIL_ADDRESS,
-        SERVICE: process.env.EMAIL_SERVICE,
+        EMAIL: {
+            USER: process.env.EMAIL_USER,
+            PASSWORD: process.env.EMAIL_PASSWORD,
+            ADDRESS: process.env.EMAIL_ADDRESS,
+        },
     },
     cloudinary: {
         TEMP_FOLDER: process.env.CLOUDINARY_TEMP_FOLDER || 'temp',
