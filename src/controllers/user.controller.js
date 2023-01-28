@@ -26,12 +26,14 @@ module.exports = {
             throw new errorObject({ message: error.message })
         }
     },
-    deleteUser: async (id) => {
+    deleteUser: async (executer, id) => {
         try {
+            if (executer.id !== id && executer.role !== 'admin')
+                throw new Error('You are not authorized to delete this user')
             const user = await userService.remove(id)
             return user
         } catch (error) {
             throw new errorObject({ message: error.message })
         }
-    }
+    },
 }
