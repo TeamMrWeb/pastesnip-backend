@@ -1,4 +1,4 @@
-# Pastesnip Backend ⚙️
+# Pastesnip Backend 
 
 Backend for **Pastesnip application** written in GraphQL Yoga and Mongoose.
 
