@@ -12,4 +12,9 @@ type Mutation {
     Returns a User type (click User to see more).
     """
     deleteUser(id: ID!): User!
+    """
+    Used for log in a user in the system, requires a registered email and password.
+    Returns a User type (click User to see more).
+    """
+    loginUser(email: String!, password: String!): Token!
 }

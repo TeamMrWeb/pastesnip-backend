@@ -6,10 +6,12 @@ module.exports = class extends GraphQLError {
         code = 'INTERNAL_SERVER_ERROR',
         data = null,
         secure = true,
+        auth = false,
     }) {
-        if (secure) super('Internal Server Error')
+        if (auth) super('Unauthorized')
+        else if (secure) super('Internal Server Error')
         else super(message)
-        console.error(message)
+        console.error('Catched an error:', message)
         this.code = code
         this.data = data
         this.secure = secure

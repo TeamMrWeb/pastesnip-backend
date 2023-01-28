@@ -1,13 +1,14 @@
-const isOwnership = require('./middlewares/isOwnership')
+const isLogged = require('./middlewares/isLogged')
 
 module.exports = {
     Query: {
-        hello: isOwnership(require('./query/hello')),
-        users: require('./query/users'),
-        getUserById: require('./query/getUserById'),
+        hello: require('./query/hello'),
+        users: isLogged(require('./query/users')),
+        getUserById: isLogged(require('./query/getUserById')),
     },
     Mutation: {
-        createNewUser: require('./mutation/createNewUser'),
-        deleteUser: require('./mutation/deleteUser'),
+        createNewUser: isLogged(require('./mutation/createNewUser')),
+        deleteUser: isLogged(require('./mutation/deleteUser')),
+        loginUser: require('./mutation/loginUser'),
     },
 }
