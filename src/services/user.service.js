@@ -5,4 +5,5 @@ module.exports = {
     create: async (user_payload) => await User.create(user_payload),
     remove: async (id) => await User.findByIdAndRemove(id),
     findAll: async () => await User.find(),
+    findById: async (id) => await User.findById(id),
 }
