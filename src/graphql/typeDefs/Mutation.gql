@@ -16,4 +16,9 @@ type Mutation {
     Used for delete a user in the system, requires a valid user id. Returns a User type (click User to see more).
     """
     deleteUser(id: ID!): User!
+    """
+    PROTECTED
+    Used for update a user in the system, required a valid user id and username. Returns a User type (click User to see more).
+    """
+    updateUser(id: ID!, username: String, about: String): User!
 }
