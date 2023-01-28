@@ -1,4 +1,13 @@
+"""
+A type that describes a Avatar.
+"""
 type Avatar {
+    """
+    The avatar secure_url is the URL accessing for view the image.
+    """
     secure_url: String
+    """
+    The avatar public_id, used to identify the Avatar and is unique.
+    """
     public_id: String
 }

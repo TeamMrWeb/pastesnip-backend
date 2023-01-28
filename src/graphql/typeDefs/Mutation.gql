@@ -1,3 +1,10 @@
+"""
+Root Mutation type, used for create, delete and modify information in the system.
+"""
 type Mutation {
+    """
+    Used for create a new user in the system, requires a valid username, email and password.
+    Returns a User type (click User to see more).
+    """
     createNewUser(username: String!, email: String!, password: String!): User!
 }

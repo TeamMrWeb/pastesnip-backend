@@ -1,4 +1,13 @@
+"""
+Root Query type, used for get information about the system.
+"""
 type Query {
+    """
+    Simple query for check if the system works. Returns a string.
+    """
     hello: String!
+    """
+    Used to get all users of the system. Returns a list of Users type (click User for see more).
+    """
     users: [User!]!
 }

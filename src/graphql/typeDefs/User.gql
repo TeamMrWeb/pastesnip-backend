@@ -1,11 +1,37 @@
+"""
+A type that describes a user.
+"""
 type User {
+    """
+    The user's ID, used to identify the user and is unique.
+    """
     id: ID
+    """
+    The user's username, is unique.
+    """
     username: String
+    """
+    The user's email, is unique.
+    """
     email: String
+    """
+    The user's about, is a short description of the user.
+    """
     about: String
+    """
+    The user's role, is the role of the user. (admin or user)
+    """
     role: String
+    """
+    The user's verified, is a boolean that indicates if the user has email verified.
+    """
     verified: Boolean
+    """
+    The user's avatar, is the user's avatar (click Avatar to see more).
+    """
     avatar: Avatar
+    """
+    The user's createdAt, is the date when the user was created.
+    """
     createdAt: String
-    updatedAt: String
 }
