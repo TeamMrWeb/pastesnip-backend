@@ -3,19 +3,33 @@ Root Mutation type, used for create, delete and modify information in the system
 """
 type Mutation {
     """
-    Used for log in a user in the system, requires a registered email and password. Returns a User type (click User to see more).
+    Used for log in a user in the system, requires a registered email and password. Returns a Token type (click Token to see more).
     """
     loginUser(email: String!, password: String!): Token!
+
+    """
+    Used for generate a new access token, requires a refresh token in the headers. Returns a Token type (click Token to see more).
+    """
+    refreshUser: Token!
+
+    """
+    PROTECTED
+    Used for log out a user in the system, requires a valid access token in the headers. Returns a String type.
+    """
+    logoutUser: String!
+
     """
     PROTECTED
     Used for create a new user in the system, requires a valid username, email and password. Returns a User type (click User to see more).
     """
     createNewUser(username: String!, email: String!, password: String!): User!
+
     """
     PROTECTED
     Used for delete a user in the system, requires a valid user id. Returns a User type (click User to see more).
     """
     deleteUser(id: ID!): User!
+
     """
     PROTECTED
     Used for update a user in the system, required a valid user id and username. Returns a User type (click User to see more).

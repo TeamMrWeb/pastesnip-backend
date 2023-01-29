@@ -27,5 +27,6 @@ module.exports = {
     models: {
         User: require('./models/User'),
         Paste: require('./models/Paste'),
+        Token: require('./models/Token'),
     },
 }
