@@ -26,6 +26,7 @@
         "bcrypt": "^5.1.0",
         "chai-http": "^4.3.0",
         "cloudinary": "^1.33.0",
+        "ejs": "^3.1.8",
         "graphql": "^16.6.0",
         "graphql-yoga": "^3.3.0",
         "jsonwebtoken": "^9.0.0",
