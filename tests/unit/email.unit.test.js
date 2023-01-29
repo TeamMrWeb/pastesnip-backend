@@ -3,7 +3,6 @@ const { check_credentials, send } = require('../../src/services/email.service')
 
 const send_emails = false
 const receiver = ''
-const html = '<h1>Test</h1>'
 
 describe('UNIT TEST: email.service', () => {
     it('should check invalid credentials', async () => {
@@ -21,21 +20,18 @@ describe('UNIT TEST: email.service', () => {
     })
 
     if (send_emails) {
-        it('should send an email', async () => {
+        it('should send an email verification', async () => {
             const res = await send({
                 to: receiver,
-                subject: 'Unit Test',
-                text: 'This is a unit test',
-            })
-            expect(res).to.be.an('object')
-            expect(res).to.have.property('accepted')
-        })
-
-        it('should send an email with html', async () => {
-            const res = await send({
-                to: receiver,
-                subject: 'Unit Test',
-                html,
+                subject: 'Verify your account (TEST)',
+                template: 'email-verification.ejs',
+                context: {
+                    title: 'Email verification',
+                    name: 'Super Tester',
+                    message:
+                        'Please verify your email address by clicking the button below.',
+                    link: 'www.google.com,',
+                },
             })
             expect(res).to.be.an('object')
             expect(res).to.have.property('accepted')
