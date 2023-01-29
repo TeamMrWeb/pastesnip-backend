@@ -10,7 +10,7 @@ const pasteSchema = new Schema(
             type: String,
             required: true,
         },
-        sintax_highlight: {
+        syntax_highlight: {
             type: String,
             required: true,
         },

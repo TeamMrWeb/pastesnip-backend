@@ -1,7 +1,6 @@
 """
-A type that describes a Paste 
+A type that describes a Paste
 """
-
 type Paste {
     """
     The paste's ID, used to identify user paste.
@@ -18,7 +17,7 @@ type Paste {
     """
     The paste's syntax highlight.
     """
-    syntax: String
+    syntax_highlight: String
     """
     The paste's tags.
     """

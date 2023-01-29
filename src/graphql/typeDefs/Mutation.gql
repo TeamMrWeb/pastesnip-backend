@@ -39,5 +39,11 @@ type Mutation {
     PROTECTED
     Used for create a new paste in the system, requires a valid title, content and language. Returns a Paste type (click Paste to see more).
     """
-    newPaste(title: String!, content: String!, language: String!): Paste!
+    createPaste(
+        title: String!
+        content: String!
+        syntax_highlight: String!
+        private: Boolean = false
+        tags: [String]
+    ): Paste!
 }
