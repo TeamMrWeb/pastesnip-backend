@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+            }
+
+            .container {
+                margin: 0 auto;
+                width: 80%;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+            }
+
+            h1 {
+                color: #333;
+                margin-bottom: 20px;
+            }
+
+            p {
+                margin-bottom: 20px;
+            }
+
+            a {
+                text-decoration: none;
+                color: #0077c9;
+                padding: 10px 20px;
+                border: 1px solid #0077c9;
+                border-radius: 10px;
+                transition: all 0.2s ease-in-out;
+            }
+
+            a:hover {
+                background-color: #0077c9;
+                color: #fff;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1><%= title %></h1>
+            <p>Hello <%= name %>,</p>
+            <p><%= message %></p>
+            <a href="<%= link %>">Verify</a>
+            <p>
+                If you have any issues or did not request this verification,
+                please contact us.
+            </p>
+            <p>Parches Team</p>
+        </div>
+    </body>
+</html>
