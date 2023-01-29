@@ -12,5 +12,7 @@ module.exports = {
         deleteUser: isLogged(require('./mutation/deleteUser')),
         updateUser: isLogged(require('./mutation/updateUser')),
         loginUser: require('./mutation/loginUser'),
+        logoutUser: isLogged(require('./mutation/logoutUser')),
+        refreshUser: require('./mutation/refreshUser'),
     },
 }
