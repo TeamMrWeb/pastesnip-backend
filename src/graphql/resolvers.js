@@ -8,11 +8,12 @@ module.exports = {
         getUserById: isLogged(require('./query/getUserById')),
     },
     Mutation: {
-        createNewUser: isLogged(require('./mutation/createNewUser')),
+        createNewUser: require('./mutation/createNewUser'),
         deleteUser: isLogged(require('./mutation/deleteUser')),
         updateUser: isLogged(require('./mutation/updateUser')),
         loginUser: require('./mutation/loginUser'),
         logoutUser: isLogged(require('./mutation/logoutUser')),
         refreshUser: require('./mutation/refreshUser'),
+        newPaste: isLogged(require('./mutation/createPaste'))
     },
 }

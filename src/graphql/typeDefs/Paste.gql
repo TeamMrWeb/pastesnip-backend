@@ -1,0 +1,42 @@
+"""
+A type that describes a Paste 
+"""
+
+type Paste {
+    """
+    The paste's ID, used to identify user paste.
+    """
+    id: ID
+    """
+    The paste's title, required to create a paste.
+    """
+    title: String
+    """
+    The paste's content, absolute required.
+    """
+    content: String
+    """
+    The paste's syntax highlight.
+    """
+    syntax: String
+    """
+    The paste's tags.
+    """
+    tags: [String]
+    """
+    The paste's views.
+    """
+    views: Int
+    """
+    The paste's private status.
+    """
+    private: Boolean
+    """
+    The paste's author, an user type.
+    """
+    author: User
+    """
+    The paste's creation date, the date when paste was created.
+    """
+    createdAt: String
+}

@@ -35,4 +35,9 @@ type Mutation {
     Used for update a user in the system, required a valid user id and username. Returns a User type (click User to see more).
     """
     updateUser(id: ID!, username: String, about: String): User!
+    """
+    PROTECTED
+    Used for create a new paste in the system, requires a valid title, content and language. Returns a Paste type (click Paste to see more).
+    """
+    newPaste(title: String!, content: String!, language: String!): Paste!
 }
