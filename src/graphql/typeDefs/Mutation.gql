@@ -46,4 +46,9 @@ type Mutation {
         private: Boolean = false
         tags: [String]
     ): Paste!
+    """
+    PROTECTED
+    Used for delete a paste in the system, requires a valid paste id. Returns a String.
+    """
+    deletePaste(id: ID!): String!
 }

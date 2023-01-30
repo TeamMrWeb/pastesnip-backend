@@ -15,6 +15,7 @@ module.exports = {
         loginUser: require('./mutation/loginUser'),
         logoutUser: isLogged(require('./mutation/logoutUser')),
         refreshUser: require('./mutation/refreshUser'),
-        createPaste: isLogged(require('./mutation/createPaste'))
+        createPaste: isLogged(require('./mutation/createPaste')),
+        deletePaste: isLogged(require('./mutation/deletePaste')),
     },
 }
