@@ -1,6 +1,15 @@
 const userService = require('../services/user.service')
 const errorObject = require('../utils/error')
-const checkout = require('../resources/checkout')
+
+const verifyOwnership = async (executer, id) => {
+    try {
+        if (executer.id !== id && executer.role !== 'admin')
+            throw new Error('You are not authorized to delete this user')
+        return true
+    } catch (error) {
+        throw new errorObject({ message: error.message })
+    }
+}
 
 module.exports = {
     create: async (user_payload) => {
@@ -29,7 +38,7 @@ module.exports = {
     },
     updateUser: async (executer, payload) => {
         try {
-            checkout.verifyOwnership(executer, payload.id)
+            verifyOwnership(executer, payload.id)
             const existUsername = await userService.findByUsername(
                 payload.username,
             )
