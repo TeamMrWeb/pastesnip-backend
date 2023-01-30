@@ -10,7 +10,7 @@ const pasteSchema = new Schema(
             type: String,
             required: true,
         },
-        sintax_highlight: {
+        syntax_highlight: {
             type: String,
             required: true,
         },
@@ -21,6 +21,7 @@ const pasteSchema = new Schema(
         views: {
             type: Number,
             required: true,
+            default: 0,
         },
         private: {
             type: Boolean,

@@ -21,4 +21,9 @@ type Query {
     Used to get a user by id. Returns a User type (click User for see more).
     """
     getUserById(id: ID!): User!
+    """
+    PROTECTED
+    Used to get pastes in the system. Returns a list of Pastes type (click Paste for see more).
+    """
+    pastes: [Paste!]!
 }
