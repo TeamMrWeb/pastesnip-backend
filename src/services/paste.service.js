@@ -1,4 +1,3 @@
-const { getPastes } = require('../controllers/paste.controller')
 const { models } = require('../database')
 const { Paste } = models
 
