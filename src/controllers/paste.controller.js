@@ -10,4 +10,20 @@ module.exports = {
             throw new errorObject({ message: error.message })
         }
     },
+    getAll: async () => {
+        try {
+            const pastes = await pasteService.findAll()
+            return pastes
+        } catch (error) {
+            throw new errorObject({ message: error.message })
+        }
+    },
+    findById: async (id) => {
+        try {
+            const paste = await pasteService.findById(id)
+            return paste
+        } catch (error) {
+            throw new errorObject({ message: error.message })
+        }
+    }
 }

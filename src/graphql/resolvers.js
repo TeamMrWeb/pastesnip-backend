@@ -6,6 +6,7 @@ module.exports = {
         hello: require('./query/hello'),
         users: isLogged(require('./query/users')),
         getUserById: isLogged(require('./query/getUserById')),
+        pastes: isLogged(require('./query/pastes')),
     },
     Mutation: {
         createNewUser: require('./mutation/createNewUser'),
