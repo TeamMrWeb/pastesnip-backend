@@ -1,6 +1,7 @@
 const pasteController = require('../../controllers/paste.controller')
 
 module.exports = async (parent, args, context) => {
-    const pastes = await pasteController.getAll()
+    const { user } = context
+    const pastes = await pasteController.getAll({ ...args, author: user.id })
     return pastes
 }

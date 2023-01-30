@@ -8,7 +8,10 @@ module.exports = {
     },
     delete: async (id) => await Paste.findByIdAndDelete(id),
     find: async (options) => await Paste.findOne(options),
-    findAll: async () => await Paste.find(),
+    findAll: async () => {
+        const paste = await Paste.find().populate('author')
+        return paste
+    },
     findById: async (id) => await Paste.findById(id),
     findByAuthor: async (author) => module.exports.find({ author }),
 }
