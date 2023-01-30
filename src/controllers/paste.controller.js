@@ -1,5 +1,6 @@
 const pasteService = require('../services/paste.service')
 const errorObject = require('../utils/error')
+const verifyOwnership = require('../utils/verifyOwnership')
 
 module.exports = {
     create: async (paste_payload) => {
@@ -15,14 +16,9 @@ module.exports = {
             const paste = await pasteService.findById(id)
             if (!paste) throw new Error('Paste not found')
             const authorId = paste.author.toString()
-            if (
-                (authorId !== executer.id && executer.role === 'admin') ||
-                authorId === executer.id
-            ) {
-                await pasteService.delete(id)
-                return 'Paste deleted successfully'
-            } else
-                throw new Error('You are not authorized to delete this paste')
+            verifyOwnership(executer, authorId)
+            await pasteService.delete(id)
+            return 'Paste deleted successfully'
         } catch (error) {
             throw new errorObject({ message: error.message })
         }
