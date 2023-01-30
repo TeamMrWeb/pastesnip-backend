@@ -43,8 +43,12 @@ module.exports = {
     deleteUser: async (executer, id) => {
         try {
             verifyOwnership(executer, id)
-            const user = await userService.remove(id)
-            return user
+            const user = await userService.findById(id)
+            if (!user) throw new Error('User not found')
+            if (user.role === 'admin')
+                throw new Error('You cannot delete an admin user')
+            await userService.remove(id)
+            return 'User deleted successfully'
         } catch (error) {
             throw new errorObject({ message: error.message })
         }
