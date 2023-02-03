@@ -15,6 +15,15 @@ module.exports = {
         })
         return { access, refresh }
     },
+    generate_email_token: (user) => {
+        const email_token = jwtService.jwt_sign(user, 'email')
+        tokenService.create({
+            value: email_token,
+            userId: user.id,
+            type: 'email',
+        })
+        return email_token
+    },
     delete_tokens: async (userId) => {
         return await tokenService.deleteMany({
             userId,
@@ -46,6 +55,23 @@ module.exports = {
             type: 'access',
         })
         if (!token_db) throw new Error('Token not found, please login again')
+        return user
+    },
+    verify_email: async (token) => {
+        const user = await jwtService.jwt_verify(token, 'email')
+        if (!user) throw new Error('Invalid token')
+        console.log(user)
+        const token_db = await tokenService.find({
+            userId: user.id,
+            value: token,
+            type: 'email',
+        })
+        if (!token_db) throw new Error('Token not found, resend email')
+        await tokenService.delete({ value: token })
+        await userService.update({
+            id: user.id,
+            verified: true,
+        })
         return user
     },
     logout: async (token) => {
