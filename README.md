@@ -2,7 +2,7 @@
 
 Backend for **Pastesnip application** written in GraphQL Yoga and Mongoose.
 
-## Development
+## Development 💫
 To start developing in this repository you need to do the following steps.
 
 Clone the repository
@@ -23,7 +23,7 @@ yarn test:unit
 yarn test:integration
 ```
 
-## Environment Variable
+## Environment Variable 📝
 Before to run the server you need to define a **.env** file with some required variables, you can check this [example](https://github.com/TeamParches/pastesnip-backend/blob/main/.env.example)
 
 Necessary
