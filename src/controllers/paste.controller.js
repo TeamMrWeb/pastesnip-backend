@@ -23,6 +23,14 @@ module.exports = {
             throw new errorObject({ message: error.message })
         }
     },
+    update: async (executer, payload) => {
+        try {
+            verifyOwnership(executer, payload.id)
+            return await pasteService.update(payload)
+        } catch (error) {
+            throw new errorObject({ message: error.message })
+        }
+    },
     getAll: async () => {
         try {
             const pastes = await pasteService.findAll()

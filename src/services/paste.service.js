@@ -7,6 +7,7 @@ module.exports = {
         return newPaste.populate('author')
     },
     delete: async (id) => await Paste.findByIdAndDelete(id),
+    update: async (payload) => await Paste.findByIdAndUpdate(payload.id, payload, { new: true }),
     find: async (options) => await Paste.findOne(options),
     findAll: async () => {
         const paste = await Paste.find().populate('author')

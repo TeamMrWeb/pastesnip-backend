@@ -11,10 +11,11 @@ module.exports = {
         pastes: isLogged(require('./query/pastes'), { verified: true }),
     },
     Mutation: {
-        createNewUser: isLogged(require('./mutation/createNewUser'), {
+        createNewUser: require('./mutation/createNewUser'),
+        deleteUser: isLogged(require('./mutation/deleteUser'), {
             verified: true,
         }),
-        deleteUser: isLogged(require('./mutation/deleteUser'), {
+        updatePaste: isLogged(require('./mutation/updatePaste'), {
             verified: true,
         }),
         updateUser: isLogged(require('./mutation/updateUser'), {
