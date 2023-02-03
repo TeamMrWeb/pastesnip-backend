@@ -7,6 +7,7 @@ module.exports = {
         PORT: process.env.PORT || 3000,
         PROTOCOL: process.env.PROTOCOL || 'http',
         DOMAIN: process.env.DOMAIN || 'localhost',
+        FRONTEND_URL: process.env.FRONTEND_URL,
         MODE: process.env.NODE_ENV
             ? process.env.NODE_ENV.trim()
             : 'development',
