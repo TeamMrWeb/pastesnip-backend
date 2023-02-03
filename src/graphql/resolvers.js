@@ -26,6 +26,10 @@ module.exports = {
         deletePaste: isLogged(require('./mutation/deletePaste'), {
             verified: true,
         }),
+        sendVerificationEmail: isLogged(
+            require('./mutation/sendVerificationEmail'),
+        ),
+        verifyEmailToken: require('./mutation/verifyEmailToken'),
         loginUser: require('./mutation/loginUser'),
         logoutUser: isLogged(require('./mutation/logoutUser')),
         refreshUser: require('./mutation/refreshUser'),

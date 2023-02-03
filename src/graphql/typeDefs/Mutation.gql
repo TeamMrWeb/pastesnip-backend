@@ -37,6 +37,15 @@ type Mutation {
     updateUser(id: ID!, username: String, about: String): User!
     """
     PROTECTED
+    Used for send a verification email to a user in the system. Returns a String.
+    """
+    sendVerificationEmail: String
+    """
+    Used for verify a user email in the system, requires a valid email token. Returns a String.
+    """
+    verifyEmailToken: String!
+    """
+    PROTECTED
     Used for create a new paste in the system, requires a valid title, content and language. Returns a Paste type (click Paste to see more).
     """
     createPaste(
