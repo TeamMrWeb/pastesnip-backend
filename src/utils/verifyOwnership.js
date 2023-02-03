@@ -11,5 +11,5 @@ module.exports = (executer, targetId) => {
         executer.id === targetId
     )
         return true
-    else throw new Error('You are not authorized to delete this user')
+    else throw new Error('You are not authorized to use this action')
 }
