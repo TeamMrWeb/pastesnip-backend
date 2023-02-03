@@ -34,6 +34,7 @@ module.exports = {
             email: user.email,
             username: user.username,
             role: user.role,
+            verified: user.verified,
         })
     },
     verify: async (token) => {
@@ -70,6 +71,7 @@ module.exports = {
             email: user.email,
             username: user.username,
             role: user.role,
+            verified: user.verified,
         })
     },
 }
