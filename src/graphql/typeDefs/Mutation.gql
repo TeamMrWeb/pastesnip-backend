@@ -60,4 +60,9 @@ type Mutation {
     Used for delete a paste in the system, requires a valid paste id. Returns a String.
     """
     deletePaste(id: ID!): String!
+    """
+    PROTECTED
+    Used for update a paste in the system, requires a valid paste id, title, content and syntax highlight. Returns a Paste type (click Paste to see more).
+    """
+    updatePaste(id: ID!, title: String, content: String, syntax_highlight: String): Paste!
 }
