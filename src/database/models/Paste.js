@@ -5,10 +5,14 @@ const pasteSchema = new Schema(
         title: {
             type: String,
             required: true,
+            minlength: 5,
+            maxlength: 30,
         },
         content: {
             type: String,
             required: true,
+            minlength: 8,
+            maxlength: 1000,
         },
         syntax_highlight: {
             type: String,
