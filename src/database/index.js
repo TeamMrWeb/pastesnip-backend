@@ -7,7 +7,6 @@ module.exports = {
             mongoose.set('strictQuery', false)
             await mongoose.connect(database.URI)
             if (global.MODE === 'development') mongoose.set('debug', true)
-            console.info('Connecting to:', database.URI)
             console.info('Database established', {
                 host: database.URI,
                 database: mongoose.connection.name,
