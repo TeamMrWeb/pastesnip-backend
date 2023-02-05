@@ -2,6 +2,8 @@
 
 Backend for **Pastesnip application** written in GraphQL Yoga and Mongoose.
 
+[![Unit Tests](https://github.com/TeamParches/pastesnip-backend/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/TeamParches/pastesnip-backend/actions/workflows/unit-tests.yml)
+
 ## Development 💫
 To start developing in this repository you need to do the following steps.
 
