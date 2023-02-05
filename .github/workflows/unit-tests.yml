@@ -21,23 +21,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-      env:
-        EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
-        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-        EMAIL_SERVICE: ${{ secrets.EMAIL_SERVICE }}
-        EMAIL_USER: ${{ secrets.EMAIL_USER }}
-        
-        JWT_ACCESS_TOKEN_SECRET: ${{ secrets.JWT_ACCESS_TOKEN_SECRET }}
-        JWT_ACCESS_TOKEN_EXPIRES_IN: ${{ secrets.JWT_ACCESS_TOKEN_EXPIRES_IN }}
-        JWT_EMAIL_VERIFICATION_SECRET: ${{ secrets.JWT_EMAIL_VERIFICATION_SECRET }}
-        JWT_EMAIL_VERIFICATION_EXPIRES_IN: ${{ secrets.JWT_EMAIL_VERIFICATION_EXPIRES_IN }}
-        JWT_REFRESH_TOKEN_SECRET: ${{ secrets.JWT_REFRESH_TOKEN_SECRET }}
-        JWT_REFRESH_TOKEN_EXPIRES_IN: $ {{ secrets.JWT_REFRESH_TOKEN_EXPIRES_IN }}
-        
-        DATABASE_URI: ${{ secrets.DATABASE_URI }}
-        
-        CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
-        CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
-        CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
     - run: npm install
     - run: npm run test:unit
