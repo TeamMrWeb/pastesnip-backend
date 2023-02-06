@@ -85,5 +85,20 @@ describe('INTEGRATION TEST: User', () => {
             expect(res).to.have.status(200)
             expect(users).to.be.an('array')
         })
+
+        it('should return a user by id', async () => {
+            const query = `query { getUserById(id: "${user_payload.id}") { id username email } }`
+            const res = await chai
+                .request(app)
+                .post('/graphql')
+                .set('auth', user_payload.access_token)
+                .send({ query })
+            const data = res.body.data.getUserById
+            expect(res).to.have.status(200)
+            expect(data).to.be.an('object')
+            expect(data.id).to.be.equal(user_payload.id)
+            expect(data.username).to.be.equal(user_payload.username)
+            expect(data.email).to.be.equal(user_payload.email)
+        })
     })
 })
