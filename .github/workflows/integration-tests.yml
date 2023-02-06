@@ -3,9 +3,12 @@ name: Integration Tests
 on:
     pull_request:
         branches: ['dev']
+        paths:
+            - 'tests/integration/**'
     push:
         branches: ['dev']
-
+        paths:
+            - 'tests/integration/**'
 jobs:
     build:
         runs-on: self-test # windows 64b
