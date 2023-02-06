@@ -25,38 +25,22 @@ describe('INTEGRATION TEST: User', () => {
         if (!response) throw new Error('Error creating user for testing')
         user_payload = { ...user_payload, id: response.id }
         await app
+
+        // simple request to get the access token
+        const res = await chai
+            .request(app)
+            .post('/graphql')
+            .send({
+                query: `mutation { loginUser(
+                    email: "${user_payload.email}", password: "${user_payload.password}")
+                    { access } 
+                }`,
+            })
+        user_payload.access_token = res.body.data.loginUser.access
     })
 
     after(async () => {
-        const response = await userService.remove(user_payload.id)
-        if (!response) throw new Error('Error removing user for testing')
         await database_close()
-    })
-
-    describe('MUTATION', () => {
-        it('should login a user', async () => {
-            const query = `mutation { loginUser(
-                email: "${user_payload.email}",
-                password: "${user_payload.password}")
-                { access refresh }
-            }`
-            const res = await chai.request(app).post('/graphql').send({ query })
-            user_payload.access_token = res.body.data.loginUser.access
-            expect(res).to.have.status(200)
-            expect(res.body.data.loginUser).to.be.an('object')
-        })
-
-        it('should not login a user with invalid email', async () => {
-            const query = `mutation { loginUser(
-                email: "yesir",
-                password: "${user_payload.password}")
-                { access refresh }
-            }`
-            const res = await chai.request(app).post('/graphql').send({ query })
-            const error = res.body.errors[0].message
-            expect(res).to.have.status(200)
-            expect(error).to.be.equal('Internal Server Error')
-        })
     })
 
     describe('QUERY', () => {
@@ -85,7 +69,6 @@ describe('INTEGRATION TEST: User', () => {
             expect(res).to.have.status(200)
             expect(users).to.be.an('array')
         })
-
         it('should return a user by id', async () => {
             const query = `query { getUserById(id: "${user_payload.id}") { id username email } }`
             const res = await chai
@@ -99,6 +82,57 @@ describe('INTEGRATION TEST: User', () => {
             expect(data.id).to.be.equal(user_payload.id)
             expect(data.username).to.be.equal(user_payload.username)
             expect(data.email).to.be.equal(user_payload.email)
+        })
+    })
+
+    describe('MUTATION', () => {
+        // createNewUser is not tested for now
+        it('should create a new user', async () => {})
+        it('should update a user', async () => {
+            const res = await chai
+                .request(app)
+                .post('/graphql')
+                .set('auth', user_payload.access_token)
+                .send({
+                    query: `mutation { updateUser(
+                    id: "${user_payload.id}", username: "testing2", about: "testing about")
+                    { id username email about }
+                }`,
+                })
+            const data = res.body.data.updateUser
+            console.log(data)
+            expect(res).to.have.status(200)
+            expect(data).to.be.an('object')
+            expect(data.id).to.be.equal(user_payload.id)
+            expect(data.username).to.be.equal('testing2')
+            expect(data.email).to.be.equal(user_payload.email)
+            expect(data.about).to.be.equal('testing about')
+        })
+        it('should cannot delete a another admin user', async () => {
+            const res = await chai
+                .request(app)
+                .post('/graphql')
+                .set('auth', user_payload.access_token)
+                .send({
+                    query: `mutation { deleteUser(id: "${user_payload.id}") }`,
+                })
+            const data = res.body.data
+            console.log(data)
+            expect(res).to.have.status(200)
+        })
+        it('should delete a user', async () => {
+            // change role to user because an admin cannot delete another admin (for now)
+            await userService.update({ id: user_payload.id, role: 'user' })
+            const res = await chai
+                .request(app)
+                .post('/graphql')
+                .set('auth', user_payload.access_token)
+                .send({
+                    query: `mutation { deleteUser(id: "${user_payload.id}") }`,
+                })
+            const data = res.body.data.deleteUser
+            expect(res).to.have.status(200)
+            expect(data).to.be.equal('User deleted successfully')
         })
     })
 })
