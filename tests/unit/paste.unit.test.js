@@ -23,7 +23,6 @@ describe('UNIT TEST: paste.service', () => {
         const test_user = await userService.create(user_payload)
         user_payload.id = test_user.id
         paste_payload.author = test_user.id
-        console.log(paste_payload)
         expect(test_user).to.be.an('object')
     })
 
