@@ -47,4 +47,12 @@ module.exports = {
             throw new errorObject({ message: error.message })
         }
     },
+    findByAuthor: async (authorId) => {
+        try {
+            const paste = await pasteService.findByAuthor(authorId)
+            return paste
+        } catch (error) {
+            throw new errorObject({ message: error.message })
+        }
+    },
 }
