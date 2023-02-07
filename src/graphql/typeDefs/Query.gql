@@ -26,4 +26,9 @@ type Query {
     Used to get pastes in the system. Returns a list of Pastes type (click Paste for see more).
     """
     pastes: [Paste!]!
+    """
+    PROTECTED
+    Used to get a paste by id. Returns a Paste type (click Paste for see more).
+    """
+    getPasteById(id: ID!): Paste!
 }
