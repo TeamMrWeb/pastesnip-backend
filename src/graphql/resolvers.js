@@ -8,6 +8,9 @@ module.exports = {
         getUserById: isLogged(require('./query/getUserById'), {
             verified: true,
         }),
+        getPasteById: isLogged(require('./query/getPasteById'), {
+            verified: true,
+        }),
         pastes: isLogged(require('./query/pastes'), { verified: true }),
     },
     Mutation: {
