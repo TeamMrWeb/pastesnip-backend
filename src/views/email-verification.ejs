@@ -14,44 +14,64 @@
                 padding: 20px;
                 border: 1px solid #ccc;
                 border-radius: 10px;
+                text-align: left;
+                background-color: #1b4332;
             }
 
             h1 {
-                color: #333;
+                color: #ffffff;
                 margin-bottom: 20px;
             }
 
             p {
                 margin-bottom: 20px;
+                color: #c5c8d4;
+            }
+
+            .link-container {
+                width: 100%;
+                display: flex;
+                justify-content: center;
             }
 
             a {
                 text-decoration: none;
-                color: #0077c9;
+                color: #fff !important;
                 padding: 10px 20px;
-                border: 1px solid #0077c9;
+                border: 2px solid #74c69d;
+                background-color: #2d6a4f;
                 border-radius: 10px;
                 transition: all 0.2s ease-in-out;
+                width: 100%;
+                max-width: 100px;
+                text-align: center;
             }
 
             a:hover {
-                background-color: #0077c9;
-                color: #fff;
+                background-color: #40916c;
+                color: #fff !important;
                 cursor: pointer;
+            }
+
+            .name {
+                color: #fff;
+                font-style: italic;
             }
         </style>
     </head>
     <body>
         <div class="container">
             <h1><%= title %></h1>
-            <p>Hello <%= name %>,</p>
+            <p>Hello <strong><%= name %></strong>,</p>
             <p><%= message %></p>
-            <a href="<%= link %>">Verify</a>
+            <div class="link-container">
+                <a href="<%= link %>">Verify</a>
+            </div>
             <p>
-                If you have any issues or did not request this verification,
+                If you have any issues or you haven't request this verification,
                 please contact us.
             </p>
-            <p>Parches Team</p>
+            <p class="name">Parches Team</p>
         </div>
     </body>
 </html>
