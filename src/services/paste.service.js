@@ -15,5 +15,6 @@ module.exports = {
         return paste
     },
     findById: async (id) => await Paste.findById(id).populate('author'),
-    findByAuthor: async (author) => module.exports.find({ author }),
+    findByAuthor: async (authorId) =>
+        await Paste.find({ author: authorId }).populate('author'),
 }
