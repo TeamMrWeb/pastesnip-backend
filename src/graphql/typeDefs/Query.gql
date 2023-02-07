@@ -31,4 +31,9 @@ type Query {
     Used to get a paste by id. Returns a Paste type (click Paste for see more).
     """
     getPasteById(id: ID!): Paste!
+    """
+    PROTECTED
+    Used to get pastes by author id. Returns a list of Pastes type (click Paste for see more).
+    """
+    getPastesByAuthor(authorId: ID!): [Paste!]!
 }
