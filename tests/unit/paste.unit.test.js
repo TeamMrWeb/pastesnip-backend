@@ -53,6 +53,12 @@ describe('UNIT TEST: paste.service', () => {
         expect(paste.title).to.be.equal(paste_payload.title)
     })
 
+    it('should find a paste by author', async () => {
+        const paste = await pasteService.findByAuthor(paste_payload.author)
+        expect(paste).to.be.an('array')
+        expect(paste.length).to.be.greaterThan(0)
+    })
+
     it('should find all pastes', async () => {
         const pastes = await pasteService.findAll()
         expect(pastes).to.be.an('array')
