@@ -1,5 +1,4 @@
 const pasteController = require('../../controllers/paste.controller')
 
-module.exports = async (parent, args, context) => {
-    return await pasteController.findById(args.id)
-}
+module.exports = async (parent, args, context) =>
+    await pasteController.findById(args.id)

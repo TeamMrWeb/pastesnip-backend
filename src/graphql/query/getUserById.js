@@ -1,7 +1,4 @@
 const userController = require('../../controllers/user.controller')
 
-module.exports = async (parent, args, context) => {
-    const { id } = args
-    const user = await userController.findById(id)
-    return user
-}
+module.exports = async (parent, args, context) =>
+    await userController.findById(args.id)
