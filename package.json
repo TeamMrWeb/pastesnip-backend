@@ -16,10 +16,10 @@
         "pastesnip"
     ],
     "scripts": {
-        "start": "SET NODE_ENV=production && node src/index.js",
-        "dev": "SET NODE_ENV=development && nodemon src/index.js",
-        "test:unit": "SET NODE_ENV=test && mocha ./tests/unit/*.js --exit --timeout 0",
-        "test:integration": "SET NODE_ENV=test && mocha ./tests/integration/*.js --timeout 0 --exit"
+        "start": "set NODE_ENV=production && node src/index.js",
+        "dev": "set NODE_ENV=development && nodemon src/index.js",
+        "test:unit": "set NODE_ENV=test && mocha ./tests/unit/*.js --exit --timeout 0",
+        "test:integration": "set NODE_ENV=test && mocha ./tests/integration/*.js --timeout 0 --exit"
     },
     "dependencies": {
         "@graphql-tools/load-files": "^6.6.1",
